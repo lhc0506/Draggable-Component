@@ -1,9 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('renders learn react link', () => {
+  it('should mark items as draggable', function () {
+    render(<App />);
+    const draggableElement = screen.getByTestId("draggable");
+    expect(draggableElement.getAttribute('draggable')).toBeTruthy();
+  });
 });
